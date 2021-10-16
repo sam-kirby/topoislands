@@ -31,7 +31,7 @@ public class IslandNew implements Command<CommandSource> {
     private static final SimpleCommandExceptionType NO_SPAWN_STRUCTURE = new SimpleCommandExceptionType(new StringTextComponent("No spawn structure is configured in the overworld"));
 
     public static ArgumentBuilder<CommandSource, ?> register(CommandDispatcher<CommandSource> dispatcher) {
-        return Commands.literal("new").requires(cs -> cs.hasPermission(4))
+        return Commands.literal("new").requires(cs -> cs.hasPermission(2))
                 .then(Commands.argument("owner", EntityArgument.player()).executes(IslandNew.INSTANCE));
     }
 

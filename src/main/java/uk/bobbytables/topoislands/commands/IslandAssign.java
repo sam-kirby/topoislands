@@ -29,7 +29,7 @@ public class IslandAssign implements Command<CommandSource> {
     private static final SimpleCommandExceptionType ISLAND_NONEXISTANT = new SimpleCommandExceptionType(new StringTextComponent("Island does not exist - create a new island with the /topoislands new command"));
 
     public static ArgumentBuilder<CommandSource, ?> register(CommandDispatcher<CommandSource> dispatcher) {
-        return Commands.literal("assign").requires(cs -> cs.hasPermission(4))
+        return Commands.literal("assign").requires(cs -> cs.hasPermission(2))
                 .then(Commands.argument("assignee", EntityArgument.player())
                         .then(Commands.argument("islandId", IntegerArgumentType.integer())
                                 .executes(IslandAssign.INSTANCE)));
