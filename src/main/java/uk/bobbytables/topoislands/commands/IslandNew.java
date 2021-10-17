@@ -53,7 +53,7 @@ public class IslandNew implements Command<CommandSource> {
         }
 
         TopoIslands.LOGGER.info("Loading save data");
-        TopoIslandsSaveData saveData = (TopoIslandsSaveData) tWorld.getDataStorage().computeIfAbsent(TopoIslandsSaveData::new, TopoIslandsSaveData.NAME);
+        TopoIslandsSaveData saveData = tWorld.getDataStorage().computeIfAbsent(TopoIslandsSaveData::new, TopoIslandsSaveData.NAME);
         int islandIndex = saveData.createIslandWithOwner(owner);
         BlockPos islandCoords = TopoIslandsSaveData.convertIndexToCoords(islandIndex).above(def.spawnStructureHeight);
         TopoIslands.LOGGER.info("Trying to create island with index {} at {}", islandIndex, islandCoords);

@@ -46,7 +46,7 @@ public class IslandAssign implements Command<CommandSource> {
 
         int islandId = IntegerArgumentType.getInteger(context, "islandId");
 
-        TopoIslandsSaveData saveData = (TopoIslandsSaveData) tWorld.getDataStorage().computeIfAbsent(TopoIslandsSaveData::new, TopoIslandsSaveData.NAME);
+        TopoIslandsSaveData saveData = tWorld.getDataStorage().computeIfAbsent(TopoIslandsSaveData::new, TopoIslandsSaveData.NAME);
 
         if (saveData.getNextIslandId() <= islandId) {
             throw ISLAND_NONEXISTANT.create();

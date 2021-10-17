@@ -26,12 +26,11 @@ public class IslandHome implements Command<CommandSource> {
     public int run(CommandContext<CommandSource> context) throws CommandSyntaxException {
         ServerPlayerEntity target = context.getSource().getPlayerOrException();
 
-
         if (target.getLevel().dimension() != World.OVERWORLD) {
             throw OWNER_NOT_IN_OVERWORLD.create();
         }
 
-        TopoIslandsSaveData saveData = (TopoIslandsSaveData) target.getLevel().getDataStorage().computeIfAbsent(TopoIslandsSaveData::new, TopoIslandsSaveData.NAME);
+        TopoIslandsSaveData saveData = target.getLevel().getDataStorage().computeIfAbsent(TopoIslandsSaveData::new, TopoIslandsSaveData.NAME);
 
         int islandId = saveData.getIslandForPlayer(target);
 

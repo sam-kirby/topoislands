@@ -31,7 +31,7 @@ public class IslandInfo implements Command<CommandSource> {
             throw OWNER_NOT_IN_OVERWORLD.create();
         }
 
-        TopoIslandsSaveData saveData = (TopoIslandsSaveData) player.getLevel().getDataStorage().computeIfAbsent(TopoIslandsSaveData::new, TopoIslandsSaveData.NAME);
+        TopoIslandsSaveData saveData = player.getLevel().getDataStorage().computeIfAbsent(TopoIslandsSaveData::new, TopoIslandsSaveData.NAME);
 
         int islandId = saveData.getIslandForPlayer(player);
         BlockPos islandPos = TopoIslandsSaveData.convertIndexToCoords(islandId);

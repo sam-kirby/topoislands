@@ -12,8 +12,6 @@ import uk.bobbytables.topoislands.world.TopoIslandsSaveData;
 
 public class Utils {
     public static void teleportToIsland(ServerPlayerEntity player, int islandId) {
-        BlockPos islandPos = TopoIslandsSaveData.convertIndexToCoords(islandId);
-
         Preset topoPreset = ConfigurationManager.getGlobalConfig().getPreset();
         DimensionDef def = topoPreset.defs.get(World.OVERWORLD.location());
         BlockPos islandCoords = TopoIslandsSaveData.convertIndexToCoords(islandId).above(def.spawnStructureHeight);
