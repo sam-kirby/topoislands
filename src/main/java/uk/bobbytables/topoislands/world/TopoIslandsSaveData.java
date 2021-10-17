@@ -27,7 +27,6 @@ public class TopoIslandsSaveData extends WorldSavedData {
     public TopoIslandsSaveData() {
         super(TopoIslandsSaveData.NAME);
         this.index.add(new HashSet<>());
-        this.setDirty();
     }
 
     public static BlockPos convertIndexToCoords(int index) {
@@ -64,7 +63,7 @@ public class TopoIslandsSaveData extends WorldSavedData {
         if (p_76184_1_.contains("Index")) {
             ListNBT indexNbt = p_76184_1_.getList("Index", 9);
             for (int i = 0; i < indexNbt.size(); i++) {
-                ListNBT playersNbt = indexNbt.getList(4);
+                ListNBT playersNbt = indexNbt.getList(i);
                 Set<UUID> islandPlayers = new HashSet<>();
                 for (int p = 0; p < playersNbt.size(); p += 2) {
                     LongNBT mostSig = (LongNBT) playersNbt.get(p);
