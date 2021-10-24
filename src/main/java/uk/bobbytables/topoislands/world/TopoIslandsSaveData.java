@@ -114,15 +114,12 @@ public class TopoIslandsSaveData extends WorldSavedData {
         return this.index.size();
     }
 
-    public boolean assignPlayerToIsland(ServerPlayerEntity player, int islandId) {
+    public void assignPlayerToIsland(ServerPlayerEntity player, int islandId) {
         clearIslandAssignment(player);
 
         if (islandId < this.index.size()) {
             this.index.get(islandId).add(player.getUUID());
             this.setDirty();
-            return true;
-        } else {
-            return false;
         }
     }
 

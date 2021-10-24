@@ -14,6 +14,7 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
+import uk.bobbytables.topoislands.TopoIslands;
 import uk.bobbytables.topoislands.world.TopoIslandsSaveData;
 
 import java.util.HashMap;
@@ -47,8 +48,8 @@ public class IslandInvite implements Command<CommandSource> {
 
         PENDING_INVITES.put(invitee.getUUID(), inviter_island);
 
-        invitee.sendMessage(inviter.getDisplayName().copy().append(" is inviting you to their island"), UUID.randomUUID());
-        invitee.sendMessage(new StringTextComponent("Click here to accept").withStyle(Style.EMPTY.withColor(TextFormatting.DARK_GREEN).withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/topoislands accept"))), UUID.randomUUID());
+        invitee.sendMessage(inviter.getDisplayName().copy().append(" is inviting you to their island"), TopoIslands.CHAT_UUID);
+        invitee.sendMessage(new StringTextComponent("Click here to accept").withStyle(Style.EMPTY.withColor(TextFormatting.DARK_GREEN).withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/topoislands accept"))), TopoIslands.CHAT_UUID);
 
         return 0;
     }
