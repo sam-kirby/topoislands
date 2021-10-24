@@ -25,6 +25,7 @@ public class IslandInvite implements Command<CommandSource> {
     private static final IslandInvite INSTANCE = new IslandInvite();
 
     private static final SimpleCommandExceptionType INVITER_NO_ISLAND = new SimpleCommandExceptionType(new StringTextComponent("You must be assigned to an island to use this command"));
+    private static final SimpleCommandExceptionType INVITER_IS_INVITEE = new SimpleCommandExceptionType(new StringTextComponent("You can't invite yourself!"));
 
     public static final Map<UUID, Integer> PENDING_INVITES = new HashMap<>();
 
@@ -37,6 +38,10 @@ public class IslandInvite implements Command<CommandSource> {
     public int run(CommandContext<CommandSource> context) throws CommandSyntaxException {
         ServerPlayerEntity inviter = context.getSource().getPlayerOrException();
         ServerPlayerEntity invitee = EntityArgument.getPlayer(context, "invitee");
+
+        if (inviter.equals(invitee)) {
+            throw INVITER_IS_INVITEE.create();
+        }
 
         TopoIslandsSaveData saveData = inviter.getLevel().getDataStorage().computeIfAbsent(TopoIslandsSaveData::new, TopoIslandsSaveData.NAME);
 
