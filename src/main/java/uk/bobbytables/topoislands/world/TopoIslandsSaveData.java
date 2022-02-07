@@ -22,7 +22,6 @@ import java.util.stream.IntStream;
 
 public class TopoIslandsSaveData extends WorldSavedData {
     public static final String NAME = "topoislands_save_data";
-    private static final int ISLAND_SPACING = 1000;
     private final List<Set<UUID>> index = new ArrayList<>();
 
     public TopoIslandsSaveData() {
@@ -118,7 +117,7 @@ public class TopoIslandsSaveData extends WorldSavedData {
     public void assignPlayerToIsland(ServerPlayerEntity player, int islandId) {
         clearIslandAssignment(player);
 
-        if (islandId < this.index.size()) {
+        if (islandId > 0 && islandId < this.index.size()) {
             this.index.get(islandId).add(player.getUUID());
             this.setDirty();
         }

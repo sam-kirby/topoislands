@@ -9,9 +9,10 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
-import uk.bobbytables.topoislands.world.TopoIslandsSaveData;
+import uk.bobbytables.topoislands.TopoIslandsConfig;
 
 public class IslandSpawn implements Command<CommandSource> {
     private static final IslandSpawn INSTANCE = new IslandSpawn();
@@ -30,7 +31,13 @@ public class IslandSpawn implements Command<CommandSource> {
             throw OWNER_NOT_IN_OVERWORLD.create();
         }
 
-        Utils.teleportToIsland(target, 0);
+        if (TopoIslandsConfig.SERVER.spawnUsesWorldSpawn.get()) {
+            BlockPos spawn = target.getLevel().getSharedSpawnPos();
+            float angle = target.getLevel().getSharedSpawnAngle();
+            target.teleportTo(target.getLevel(), spawn.getX(), spawn.getY(), spawn.getZ(), angle, 0f);
+        } else {
+            Utils.teleportToIsland(target, 0);
+        }
 
         return 0;
     }
