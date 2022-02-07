@@ -6,6 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.network.FMLNetworkConstants;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
@@ -29,6 +30,7 @@ public class TopoIslands {
                 () -> FMLNetworkConstants.IGNORESERVERONLY,
                 (v, n) -> true
         ));
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, TopoIslandsConfig.serverSpec);
     }
 
     @SubscribeEvent

@@ -46,7 +46,7 @@ minecraft {
     // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/client')
 
             // Recommended logging data for a userdev environment
             // The markers can be changed as needed.
@@ -68,7 +68,7 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/server')
 
             // Recommended logging data for a userdev environment
             // The markers can be changed as needed.
@@ -132,7 +132,7 @@ dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.8'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.26'
     compileOnly fg.deobf('curse.maven:topography-1.16-1.17.0-297878:3485187')
     runtimeOnly fg.deobf('curse.maven:topography-1.16-1.17.0-297878:3485187')
 }

@@ -8,6 +8,7 @@ import net.minecraft.nbt.LongNBT;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.storage.WorldSavedData;
+import uk.bobbytables.topoislands.TopoIslandsConfig;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -54,7 +55,7 @@ public class TopoIslandsSaveData extends WorldSavedData {
             }
         }
 
-        return new BlockPos(x * ISLAND_SPACING, 0, z * ISLAND_SPACING);
+        return new BlockPos(x * TopoIslandsConfig.SERVER.islandSeparation.get(), 0, z * TopoIslandsConfig.SERVER.islandSeparation.get());
     }
 
     @Override
