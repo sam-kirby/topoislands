@@ -18,7 +18,7 @@ if (System.getenv('GITHUB_ACTIONS'))
 
 def suffix = buildnumber != null ? buildnumber : 'SNAPSHOT'
 
-version = "1.1-$suffix"
+version = "1.2-$suffix"
 group = 'uk.bobbytables.topoislands' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'topoislands'
 
