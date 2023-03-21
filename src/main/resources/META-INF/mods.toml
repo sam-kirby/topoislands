@@ -56,3 +56,9 @@ Adds island generation commands to Topography
     versionRange="[1.16.5,1.17)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.topoislands]]
+    modId="topography"
+    mandatory=true
+    versionRange="[1.17,)"
+    ordering="AFTER"
+    side="BOTH"
